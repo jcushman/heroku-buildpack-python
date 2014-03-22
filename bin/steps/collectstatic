@@ -7,7 +7,12 @@ MANAGE_FILE=${MANAGE_FILE:-fakepath}
 
 [ -f .heroku/collectstatic_disabled ] && DISABLE_COLLECTSTATIC=1
 
+echo "HERE1"
+echo $MANAGE_FILE
+python $MANAGE_FILE collectstatic --dry-run --noinput
+
 if [ ! "$DISABLE_COLLECTSTATIC" ] && [ -f "$MANAGE_FILE" ]; then
+    echo "HERE2"
     set +e
 
     # Check if collectstatic is configured properly.
